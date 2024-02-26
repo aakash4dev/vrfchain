@@ -1,0 +1,17 @@
+syntax = "proto3";
+package vrfchain.vrfchain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "vrfchain/vrfchain/params.proto";
+
+option go_package = "github.com/aakash4dev/vrfchain/x/vrfchain/types";
+
+// GenesisState defines the vrfchain module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

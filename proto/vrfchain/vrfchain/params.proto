@@ -1,0 +1,15 @@
+syntax = "proto3";
+package vrfchain.vrfchain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/aakash4dev/vrfchain/x/vrfchain/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "vrfchain/x/vrfchain/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
