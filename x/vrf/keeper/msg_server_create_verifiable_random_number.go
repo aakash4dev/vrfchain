@@ -66,7 +66,7 @@ func (k msgServer) CreateVerifiableRandomNumber(goCtx context.Context, msg *type
 
 	// store the number
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	store := prefix.NewStore(storeAdapter, types.KeyPrefix("/randomnumber")) //types.PostKey))
+	store := prefix.NewStore(storeAdapter, types.KeyPrefix("/psudorandomnumber")) //types.PostKey))
 	// psudoRandomNumber to bytes
 	psudoRandomNumberBytes := psudoRandomNumber.Bytes()
 	store.Set([]byte("podID"), psudoRandomNumberBytes)
