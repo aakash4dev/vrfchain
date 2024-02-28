@@ -71,7 +71,10 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	vrfmodulev1 "github.com/aakash4dev/vrfchain/api/vrfchain/vrf/module"
 	vrfchainmodulev1 "github.com/aakash4dev/vrfchain/api/vrfchain/vrfchain/module"
+	_ "github.com/aakash4dev/vrfchain/x/vrf/module" // import for side-effects
+	vrfmoduletypes "github.com/aakash4dev/vrfchain/x/vrf/types"
 	_ "github.com/aakash4dev/vrfchain/x/vrfchain/module" // import for side-effects
 	vrfchainmoduletypes "github.com/aakash4dev/vrfchain/x/vrfchain/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -112,6 +115,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		vrfchainmoduletypes.ModuleName,
+		vrfmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -137,6 +141,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		vrfchainmoduletypes.ModuleName,
+		vrfmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -156,6 +161,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		vrfchainmoduletypes.ModuleName,
+		vrfmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -308,6 +314,10 @@ var (
 			{
 				Name:   vrfchainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&vrfchainmodulev1.Module{}),
+			},
+			{
+				Name:   vrfmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&vrfmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
